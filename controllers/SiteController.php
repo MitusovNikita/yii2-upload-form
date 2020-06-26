@@ -189,4 +189,14 @@ class SiteController extends Controller
 
          return $this->render('db-list', ['days' => $days]);
      }
+
+     /**
+      * Displays shop menu.
+      *
+      * @return string
+      */
+     public function actionShop()
+     {
+         return $this->render('shop');
+     }
 }

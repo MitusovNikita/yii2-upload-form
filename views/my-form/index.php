@@ -1,45 +1,13 @@
 <?php
-
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\ContactForm */
-
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-
-$this->title = 'My form';
-$this->params['breadcrumbs'][] = $this->title;
+use yii\widgets\ActiveForm;
 ?>
-<div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
+<?php $form = ActiveForm::begin(); ?>
 
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+<?= $form->field($model,'name')->dropDownList([
+    '0' => 'Активный',
+    '1' => 'Отключен',
+    '2'=>'Удален'
+]); ?>
 
-        <div class="alert alert-success">
-            Спасибо за отправку сообщения.
-        </div>
-
-    <?php else: ?>
-
-        <div class="row">
-            <div class="col-lg-5">
-
-                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-
-                    <?= $form->field($model, 'name') ?>
-
-                    <?= $form->field($model, 'phone') ?>
-
-                    <?= $form->field($model, 'message')->textarea(['rows' => 6]) ?>
-
-                    <div class="form-group">
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                    </div>
-
-                <?php ActiveForm::end(); ?>
-
-            </div>
-        </div>
-
-    <?php endif; ?>
-</div>
+<?php ActiveForm::end(); ?>
